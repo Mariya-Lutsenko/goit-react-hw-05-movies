@@ -6,12 +6,13 @@ nav {
   padding: 8px 0;
   margin-bottom: 16px;
   border-bottom: 1px solid #2281ee;
+  box-shadow: 10px 13px 13px -8px rgba(135, 186, 240, 1);
 }
 .link {
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  color: #2281ee;
+  color: #539cf0;
   background-color: #eef1f5;
 
   font-weight: 500;
@@ -21,6 +22,6 @@ nav {
 
 .active {
   composes: link;
-  background-color: #2281ee;
+  background-color: #539cf0;
   color: #eef1f5;
 }
