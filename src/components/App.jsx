@@ -1,16 +1,17 @@
-//  import {Routes, Route} from "react-router-dom";
- import Container from "./Container/Container";
- import Navigation from "./Navigation/Navigation";
- 
+import { Routes, Route } from 'react-router-dom';
+import Container from './Container/Container';
+import Navigation from './Navigation/Navigation';
+import HomePage from 'pages/HomePage/HomePage';
 
- const App = () => {
+const App = () => {
   return (
-   <Container>
-    <Navigation/>
-   </Container>
-
-  )
-  
+    <Container>
+      <Navigation />
+      <Routes>
+        <Route path='/' element={<HomePage/>} />
+      </Routes>
+    </Container>
+  );
 };
 
 export default App;
