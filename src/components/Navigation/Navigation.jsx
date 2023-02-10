@@ -4,20 +4,18 @@ import styles from './Navigation.module.css';
 const Navigation = () => (
   <nav>
     <NavLink
-      exact
-      to="/"
-      className={styles.link}
-      activeClassName={styles.active}
+     className={({isActive}) => (isActive? styles.active : styles.link)}
+     to="/"
     >
       Home
     </NavLink>
     <NavLink
+      className={({ isActive }) => (isActive ? styles.active : styles.link)}
       to="/movies"
-      className={styles.link}
-      activeClassName={styles.active}
     >
       Movies
     </NavLink>
+    <hr/>
   </nav>
 );
 export default Navigation;
