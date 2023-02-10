@@ -1,17 +1,26 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #2281ee;
+}
 .link {
-  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
   text-decoration: none;
-  padding: 12px;
+  color: #2281ee;
+  background-color: #eef1f5;
+
   font-weight: 500;
-  color: #2a363b;
+  font-weight: 500;
   font-size: 18px;
 }
 
 .active {
-  display: inline-block;
-  text-decoration: none;
-  padding: 12px;
-  font-weight: 500;
-  color: #b92121;
-  font-size: 18px;
+  composes: link;
+  background-color: #2281ee;
+  color: #eef1f5;
 }

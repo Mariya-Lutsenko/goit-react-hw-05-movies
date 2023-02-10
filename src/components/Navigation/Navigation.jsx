@@ -15,7 +15,7 @@ const Navigation = () => (
     >
       Movies
     </NavLink>
-    <hr/>
+  
   </nav>
 );
 export default Navigation;
