@@ -1,51 +1,30 @@
 import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'services/api-movies';
-import { Link, useLocation } from 'react-router-dom';
+import MoviesList from './MoviesList/MoviesList';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchTrending = async() => {
-        try{
-        setLoading(true);
-        const data = await fetchTrendingMovies();
-        console.log(data);
-        }
-        catch{
-
-        }
-        finally{
-
-        }
+    const fetchTrending = async () => {
+      try {
+        const {results} = await fetchTrendingMovies();
+        setMovies(results);
+    
+      } catch (error) {
+        setError(error.message);
+      } 
     };
     fetchTrending();
-  
-  },[]);
-
-
- /* data.hits.length === 0
-  ? toast.error('Nothing found')
-  : setPictures(prevPictures => [...prevPictures, ...data.hits]);
-setTotalHits(data.totalHits);
-} catch (error) {
-setError(error.message);
-} finally {
-setLoading(false);
-}
-};
-fetchPictures();
-}, [search, page]);
-*/
-
-
-
-
+  }, []);
+  console.log(movies);
   return (
-    <>
+    <main>
       <h1>Tranding today</h1>
-    </>
+        {movies && <MoviesList movies={movies}/>}
+      {error && <p>Something goes wrong</p>}
+    </main>
   );
 };
 export default HomePage;

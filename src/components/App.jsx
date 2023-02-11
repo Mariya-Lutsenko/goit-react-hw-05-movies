@@ -5,15 +5,16 @@ import HomePage from 'pages/HomePage/HomePage';
 
 const App = () => {
   return (
-    <>
-    <Navigation />
+    
+    
     <Container>
+      <Navigation />
       <Routes>
         <Route path='/' element={<HomePage/>} />
         <Route path ='*' element ={<Navigate to="/" />}/>
       </Routes>
     </Container>
-    </>
+    
   );
 };
 
