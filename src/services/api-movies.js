@@ -3,6 +3,7 @@ const instance = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
   params: {
     api_key: '3bfeb78ba6df5af22a5c39d335985fa7',
+    language: 'en-US',
   },
 });
 
@@ -11,4 +12,13 @@ export const fetchTrendingMovies = async () => {
   return data;
 };
 
-// 3bfeb78ba6df5af22a5c39d335985fa7
+export const searchMovies = async searchQuery => {
+  const { data } = await instance.get('search/movie', {
+    params: {
+      page: 1,
+      include_adult: false,
+      query: searchQuery,
+    },
+  });
+  return data;
+};
