@@ -2,10 +2,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Container from './Container/Container';
 import Navigation from './Navigation/Navigation';
-// import HomePage from 'pages/HomePage/HomePage';
+import HomePage from 'pages/HomePage/HomePage';
 import Loader from './Loader/Loader';
-
-const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 
 const App = () => {
   return (
@@ -13,12 +11,10 @@ const App = () => {
     
     <Container>
       <Navigation />
-      <Suspense fallback={<Loader/>}>
       <Routes>
         <Route path='/' element={<HomePage/>} />
         <Route path ='*' element ={<Navigate to="/" />}/>
       </Routes>
-      </Suspense>
     </Container>
     
   );
