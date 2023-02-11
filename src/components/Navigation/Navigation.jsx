@@ -5,7 +5,7 @@ const Navigation = () => (
   <nav>
     <NavLink
      className={({isActive}) => (isActive? styles.active : styles.link)}
-     to="/"
+      to="/"
     >
       Home
     </NavLink>
