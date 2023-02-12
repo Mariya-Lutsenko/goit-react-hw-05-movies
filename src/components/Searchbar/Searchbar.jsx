@@ -6,7 +6,6 @@ const Searchbar = ({ onSubmit }) => {
 
   const handleChange = ({ target }) => {
     setQuery(target.value);
-    console.log(query)
   };
 
   const handleSubmit = event => {

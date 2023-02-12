@@ -1,3 +1,4 @@
+import styles from './MoviesEditorList.module.css'
 import {Link, useLocation} from "react-router-dom";
 import PropTypes from 'prop-types';
 
@@ -8,7 +9,7 @@ const MoviesEditorList = ({movies}) =>{
             {movies && movies.map(({id, title}) => 
             
             (
-                <li key={id}>
+                <li key={id} className={styles.movielink}>
                     <Link to={`/movies/${id}`} state={{from: location}}>
                         {title}
                     </Link>

@@ -41,7 +41,6 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <h1> Movies Page</h1>
       <Searchbar onSubmit ={searchMoviesByQuery }/>
       <ToastContainer position="top-right" autoClose={3000} />
       {movies && <MoviesEditorList movies={movies} />}
