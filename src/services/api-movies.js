@@ -7,6 +7,8 @@ const instance = axios.create({
   },
 });
 
+export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
+
 export const fetchTrendingMovies = async () => {
   const { data } = await instance.get('/trending/movie/day');
   return data;
