@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'services/api-movies';
-import MoviesList from './MoviesList/MoviesList';
+import MoviesTrendingList from 'components/MoviesTrendingList/MoviesTrendingList';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -9,12 +9,11 @@ const HomePage = () => {
   useEffect(() => {
     const fetchTrending = async () => {
       try {
-        const {results} = await fetchTrendingMovies();
+        const { results } = await fetchTrendingMovies();
         setMovies(results);
-    
       } catch (error) {
         setError(error.message);
-      } 
+      }
     };
     fetchTrending();
   }, []);
@@ -22,7 +21,7 @@ const HomePage = () => {
   return (
     <main>
       <h1>Tranding today</h1>
-        {movies && <MoviesList movies={movies}/>}
+      {movies && <MoviesTrendingList movies={movies} />}
       {error && <p>Something goes wrong</p>}
     </main>
   );
