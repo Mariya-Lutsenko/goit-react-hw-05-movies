@@ -1,7 +1,7 @@
 import styles from './MovieDetailsPage.module.css';
 import Loader from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
-import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
+import { useParams,  useLocation, useNavigate } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api-movies';
 import { BiCaretLeftCircle } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
