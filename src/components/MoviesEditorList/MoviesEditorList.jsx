@@ -1,7 +1,7 @@
 import {Link, useLocation} from "react-router-dom";
 import PropTypes from 'prop-types';
 
-const MoviesTrendingList = ({movies}) =>{
+const MoviesEditorList = ({movies}) =>{
     const location = useLocation();
     return (
         <ul>
@@ -19,7 +19,7 @@ const MoviesTrendingList = ({movies}) =>{
 
 }
 
-MoviesTrendingList.propTypes = {
+MoviesEditorList.propTypes = {
     movies: PropTypes.arrayOf (
         PropTypes.shape({
             id: PropTypes.number.isRequired,
@@ -28,4 +28,4 @@ MoviesTrendingList.propTypes = {
     )
 }
 
-export default MoviesTrendingList;
+export default MoviesEditorList;

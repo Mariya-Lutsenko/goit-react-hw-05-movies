@@ -1,11 +1,13 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+
 import Container from 'components/Container/Container';
 import Navigation from 'components/Navigation/Navigation';
 import Loader from 'components/Loader/Loader';
-import MoviesPage from 'pages/MoviesPage/MoviesPage';
+
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
 
 const App = () => {
   return (

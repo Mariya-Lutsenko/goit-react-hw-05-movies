@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'services/api-movies';
-import MoviesTrendingList from 'components/MoviesTrendingList/MoviesTrendingList';
+import MoviesEditorList from 'components/MoviesEditorList/MoviesEditorList';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -17,11 +17,10 @@ const HomePage = () => {
     };
     fetchTrending();
   }, []);
-  console.log(movies);
   return (
     <main>
       <h1>Tranding today</h1>
-      {movies && <MoviesTrendingList movies={movies} />}
+      {movies && <MoviesEditorList movies={movies} />}
       {error && <p>Something goes wrong</p>}
     </main>
   );
