@@ -1,5 +1,5 @@
 .button {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -16,8 +16,10 @@
 }
 .movieContainer {
   display: flex;
-  /* align-items: center; */
+
   justify-content: center;
+  border: 1px solid #8d2222e1;
+  padding: 10px;
 }
 
 .movieImg {

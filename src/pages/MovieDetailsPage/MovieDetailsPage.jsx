@@ -1,7 +1,7 @@
 import styles from './MovieDetailsPage.module.css';
 import Loader from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
-import { useParams,  useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { fetchMovieDetails, IMAGE_URL } from 'services/api-movies';
 import { BiCaretLeftCircle } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
@@ -17,14 +17,13 @@ const MovieDetailsPage = () => {
 
   useEffect(() => {
     const getDetailsMovie = async () => {
-        setLoading(true);
+      setLoading(true);
       try {
         const data = await fetchMovieDetails(movieId);
         setMovie(data);
       } catch (error) {
         setError(error.massage);
-      }
-      finally{
+      } finally {
         setLoading(false);
       }
     };
@@ -36,14 +35,17 @@ const MovieDetailsPage = () => {
   };
   return (
     <>
-      
       {!movie ? (
         <div className={styles.notFound}>This movie is not found</div>
       ) : (
         <>
           <button className={styles.button} type="button" onClick={onGoBack}>
             <IconContext.Provider
-              value={{ color: 'white', size: 22, className: 'global-class-name' }}
+              value={{
+                color: 'white',
+                size: 22,
+                className: 'global-class-name',
+              }}
             >
               <div>
                 <BiCaretLeftCircle />
@@ -51,9 +53,9 @@ const MovieDetailsPage = () => {
             </IconContext.Provider>
             <span>Go back</span>
           </button>
-          <div className={styles.movieContainer}></div>
-<div className={styles.movieImg}>
-<img
+          <div className={styles.movieContainer}>
+            <div className={styles.movieImg}>
+              <img
                 src={
                   movie.poster_path
                     ? IMAGE_URL + movie.poster_path
@@ -63,11 +65,22 @@ const MovieDetailsPage = () => {
                 widht=""
                 height=""
               />
-</div>
+            </div>
+
+            <div>
+              <h2>{movie.title}</h2>
+              <p>User Score: {`${movie.vote_average * 10}`}%</p>
+              <h3>Overview</h3>
+              <p>{`${movie.overview}`}</p>
+              <h3>Genres</h3>
+              <p>{`${movie.genres.map(genre => genre.name).join(' / ')}`}</p>
+            </div>
+          </div>
         </>
       )}
-       {error && <p>Something goes wrong</p>}
-       {loading && <Loader />}
+         
+      {error && <p>Something goes wrong</p>}
+      {loading && <Loader />}
     </>
   );
 };
