@@ -1,40 +1,53 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import MoviesEditorList from 'components/MoviesEditorList/MoviesEditorList';
 import { searchMovies } from 'services/api-movies';
 import Searchbar from 'components/Searchbar/Searchbar';
-import MoviesEditorList from 'components/MoviesEditorList/MoviesEditorList';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchMovie = searchParams.get('search');
+  const query = searchParams.get('query');
 
-  const searchMoviesBySearch = newSearch => {
+  useEffect(() => {
+    if (!query) {
+      return;
+    }
+
+    const fetchSearchMovies = async () => {
+      try {
+        const { results } = await searchMovies(query);
+        if (results.length === 0) {
+          toast.error('There are no movies matching your request.');
+        }
+        setMovies(results);
+      } catch (error) {
+        setError(error.massage);
+      }
+    };
+    fetchSearchMovies();
+  }, [query]);
+
+  const searchMoviesByQuery = newSearch => {
+    if (newSearch.trim() === '') {
+      toast.error('Enter a search term.');
+    }
+    setMovies([]);
     setSearchParams({ query: newSearch });
   };
 
-
-  useEffect(() => {
-    if (searchMovie) {
-      const fetchMovies = async () => {
-        try {
-          const {results} = await searchMovies(searchMovie);
-          setMovies(results);
-        } catch (error) {
-            setError(error.message);
-        }
-      };
-      fetchMovies();
-    }
-  }, [searchMovie]);
-console.log(movies)
   return (
-    <main>
-      <Searchbar onSubmit={searchMoviesBySearch} />
+    <div>
+      <h1> Movies Page</h1>
+      <Searchbar onSubmit ={searchMoviesByQuery }/>
+      <ToastContainer position="top-right" autoClose={3000} />
       {movies && <MoviesEditorList movies={movies} />}
       {error && <p>Something goes wrong</p>}
-    </main>
+    </div>
   );
 };
+
 export default MoviesPage;
