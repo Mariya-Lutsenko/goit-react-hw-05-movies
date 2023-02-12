@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/674.a673fa1a.chunk.css","mappings":"AAAA,2CACE,eAAgB,CAChB,eACF,CCHA,uBACE,eACF","sources":["components/MoviesEditorList/MoviesEditorList.module.css","pages/HomePage/HomePage.module.css"],"sourcesContent":[".movielink::marker {\n  color: #8d2222e1;\n  font-size: 1.5em;\n}\n",".title {\n  color: #8d2222e1;\n}\n"],"names":[],"sourceRoot":""}
