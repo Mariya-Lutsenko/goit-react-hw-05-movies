@@ -84,24 +84,26 @@ const MovieDetailsPage = () => {
                 <h3>Genres</h3>
                 <p>{`${movie.genres.map(genre => genre.name).join(' / ')}`}</p>
               </div>
-             
-              
             </div>
             <hr />
 
             <div>
-                <h3>Additional information</h3>
-                <ul>
-                  <li>
-                    <Link to="cast" state={{from}}>Cast</Link>
-                  </li>
-                  <li>
-                    <Link to="reviews" state={{from}}>Reviews</Link>
-                  </li>
-                </ul>
-              </div>
-              <hr />
-              <Outlet />
+              <h3>Additional information</h3>
+              <ul>
+                <li>
+                  <Link to="cast" state={{ from }}>
+                    Cast
+                  </Link>
+                </li>
+                <li>
+                  <Link to="reviews" state={{ from }}>
+                    Reviews
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <hr />
+            <Outlet />
           </div>
         </>
       )}

@@ -4,7 +4,6 @@ const Container = ({ children }) => {
   return <div className={styles.container}>{children}</div>;
 };
 
-
 Container.propTypes = {
   children: PropTypes.array.isRequired,
 };

@@ -13,7 +13,7 @@ const CastPage = () => {
     const getMovieActors = async () => {
       setLoading(true);
       try {
-        const {cast} = await fetchMovieActors(movieId);
+        const { cast } = await fetchMovieActors(movieId);
         setActors(cast);
       } catch (error) {
         setError(error.massage);
@@ -29,21 +29,21 @@ const CastPage = () => {
       {loading && <Loader />}
       {error && <p>Something goes wrong</p>}
       <ul>
-      {
-        actors.map(actor => (
-            <li key={actor.id}>
+        {actors.map(actor => (
+          <li key={actor.id}>
             <img
               width="200px"
-              src={actor.profile_path
-                ? IMAGE_URL + actor.profile_path
-                : `https://bitsofco.de/content/images/2018/12/broken-1.png`}
+              src={
+                actor.profile_path
+                  ? IMAGE_URL + actor.profile_path
+                  : `https://bitsofco.de/content/images/2018/12/broken-1.png`
+              }
               alt={actor.original_name}
             />
             <p>{actor.name}</p>
             <p>Character: {actor.character}</p>
           </li>
-        ))
-      }
+        ))}
       </ul>
     </div>
   );
