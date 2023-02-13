@@ -33,8 +33,11 @@ const MovieDetailsPage = () => {
   const onGoBack = () => {
     navigate(from);
   };
+
   return (
     <>
+      {error && <p>Something goes wrong</p>}
+      {loading && <Loader />}
       {!movie ? (
         <div className={styles.notFound}>This movie is not found</div>
       ) : (
@@ -53,7 +56,7 @@ const MovieDetailsPage = () => {
             </IconContext.Provider>
             <span>Go back</span>
           </button>
-          <div className={styles.movieContainer}>
+          <div className={styles.movieDetalis}>
             <div className={styles.movieImg}>
               <img
                 src={
@@ -61,14 +64,14 @@ const MovieDetailsPage = () => {
                     ? IMAGE_URL + movie.poster_path
                     : `https://bitsofco.de/content/images/2018/12/broken-1.png`
                 }
-                alt={movie.title}
-                widht=""
-                height=""
+                alt={movie.original_title}
+                widht="300px"
+               
               />
             </div>
 
             <div>
-              <h2>{movie.title}</h2>
+              <h2 className={styles.title}>{movie.title}</h2>
               <p>User Score: {`${movie.vote_average * 10}`}%</p>
               <h3>Overview</h3>
               <p>{`${movie.overview}`}</p>
@@ -78,9 +81,8 @@ const MovieDetailsPage = () => {
           </div>
         </>
       )}
-         
-      {error && <p>Something goes wrong</p>}
-      {loading && <Loader />}
+
+      
     </>
   );
 };
