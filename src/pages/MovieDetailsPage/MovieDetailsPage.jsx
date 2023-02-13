@@ -1,7 +1,13 @@
 import styles from './MovieDetailsPage.module.css';
 import Loader from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import {
+  useParams,
+  useLocation,
+  useNavigate,
+  Link,
+  Outlet,
+} from 'react-router-dom';
 import { fetchMovieDetails, IMAGE_URL } from 'services/api-movies';
 import { BiCaretLeftCircle } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
@@ -56,33 +62,49 @@ const MovieDetailsPage = () => {
             </IconContext.Provider>
             <span>Go back</span>
           </button>
-          <div className={styles.movieDetalis}>
-            <div className={styles.movieImg}>
-              <img
-                src={
-                  movie.poster_path
-                    ? IMAGE_URL + movie.poster_path
-                    : `https://bitsofco.de/content/images/2018/12/broken-1.png`
-                }
-                alt={movie.original_title}
-                widht="300px"
-               
-              />
+          <div className={styles.container}>
+            <div className={styles.movieDetalis}>
+              <div className={styles.movieImg}>
+                <img
+                  src={
+                    movie.poster_path
+                      ? IMAGE_URL + movie.poster_path
+                      : `https://bitsofco.de/content/images/2018/12/broken-1.png`
+                  }
+                  alt={movie.original_title}
+                  widht="300px"
+                />
+              </div>
+
+              <div>
+                <h2 className={styles.title}>{movie.title}</h2>
+                <p>User Score: {`${movie.vote_average * 10}`}%</p>
+                <h3>Overview</h3>
+                <p>{`${movie.overview}`}</p>
+                <h3>Genres</h3>
+                <p>{`${movie.genres.map(genre => genre.name).join(' / ')}`}</p>
+              </div>
+             
+              
             </div>
+            <hr />
 
             <div>
-              <h2 className={styles.title}>{movie.title}</h2>
-              <p>User Score: {`${movie.vote_average * 10}`}%</p>
-              <h3>Overview</h3>
-              <p>{`${movie.overview}`}</p>
-              <h3>Genres</h3>
-              <p>{`${movie.genres.map(genre => genre.name).join(' / ')}`}</p>
-            </div>
+                <h3>Additional information</h3>
+                <ul>
+                  <li>
+                    <Link to="cast" state={{from}}>Cast</Link>
+                  </li>
+                  <li>
+                    <Link to="reviews" state={{from}}>Reviews</Link>
+                  </li>
+                </ul>
+              </div>
+              <hr />
+              <Outlet />
           </div>
         </>
       )}
-
-      
     </>
   );
 };
