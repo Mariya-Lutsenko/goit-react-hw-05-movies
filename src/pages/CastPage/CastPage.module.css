@@ -1,8 +1,11 @@
 .list {
-  list-style-type: none;
-  display: flex;
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: max-content; */
+  list-style: none;
+  /* display: flex; */
   gap: 20px;
-  align-items: stretch;
+  align-items: first baseline;
   flex-wrap: wrap;
   justify-content: space-around;
   @media screen and (min-width: 1199px) {
