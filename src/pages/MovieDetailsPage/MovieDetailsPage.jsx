@@ -78,7 +78,7 @@ const MovieDetailsPage = () => {
 
               <div>
                 <h2 className={styles.title}>{movie.title}</h2>
-                <p>User Score: {`${movie.vote_average * 10}`}%</p>
+                <p>User Score: {`${movie.vote_average.toFixed(1)}`}</p>
                 <h3>Overview</h3>
                 <p>{`${movie.overview}`}</p>
                 <h3>Genres</h3>
@@ -89,14 +89,18 @@ const MovieDetailsPage = () => {
 
             <div>
               <h3>Additional information</h3>
-              <ul>
+              <ul className={styles.list}>
                 <li>
-                  <Link to="cast" state={{ from }}>
+                  <Link className={styles.itemLink} to="cast" state={{ from }}>
                     Cast
                   </Link>
                 </li>
                 <li>
-                  <Link to="reviews" state={{ from }}>
+                  <Link
+                    className={styles.itemLink}
+                    to="reviews"
+                    state={{ from }}
+                  >
                     Reviews
                   </Link>
                 </li>
